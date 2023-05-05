@@ -10,7 +10,9 @@ import './App.css';
 
 import * as React from 'react';
 import ThemeCustomization from './themes';
-import ShowCard from './components/cards/showcard';
+import  ShowCard from './components/cards/ShowCard';
+import  MainCard from './components/cards/MainCard';
+import OrderTable from './components/pages/OrderTable'
 import { ThemeProvider, createTheme } from '@mui/system';
 import { Grid,Box,Card,  CardContent,CardActions, Button, Typography,Stack,
   Chip } from '@mui/material';
@@ -36,6 +38,21 @@ function App() {
           </Grid>
           <Grid item xs={4}>
             <ShowCard title="Total Sales" count="90.8" percentage={15.06} color="primary"/>
+          </Grid>
+
+          <Grid item md={8} sx={{ display: { sm: 'none', md: 'block', lg: 'none' } }} />
+
+                      {/* row 3 */}
+          <Grid item xs={12} md={7} lg={8}>
+            <Grid container alignItems="center" justifyContent="space-between">
+                <Grid item>
+                    <Typography variant="h5">Recent Orders</Typography>
+                </Grid>
+                <Grid item />
+            </Grid>
+            <MainCard sx={{ mt: 2 }} content={false}>
+                <OrderTable />
+            </MainCard>
           </Grid>
       </Grid>
     </ThemeCustomization>
