@@ -17,11 +17,11 @@ import OrderTable from './components/pages/OrderTable'
 import ReportAreaChart from './components/pages/ReportAreaChart';
 import SalesColumnChart from './components/pages/SalesColumnChart';
 
-import { ThemeProvider, createTheme } from '@mui/system';
 import { GiftOutlined, MessageOutlined, SettingOutlined } from '@ant-design/icons';
-import { Grid,Box,Card,  CardContent,CardActions, Button, Typography,Stack,
-  Chip, List, ListItemButton,ListItemText, MenuItem, TextField, Avatar,AvatarGroup,
-  ListItemAvatar, ListItemSecondaryAction } from '@mui/material';
+import { Grid, Button, Typography,Stack,
+        List, ListItemButton,ListItemText, 
+        MenuItem, TextField, Avatar,AvatarGroup,
+        ListItemAvatar, ListItemSecondaryAction } from '@mui/material';
 
 import avatar1 from './assets/images/users/avatar-1.png';
 import avatar2 from './assets/images/users/avatar-2.png';
@@ -62,7 +62,7 @@ const actionSX = {
 
 function App() {
   const [value, setValue] = useState('today');
-  const [slot, setSlot] = useState('week');
+//   const [slot, setSlot] = useState('week');
 
   return (
 

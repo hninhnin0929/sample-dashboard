@@ -1,15 +1,8 @@
 import PropTypes from 'prop-types';
 
 // material-ui
-import { Box, Chip, Grid, Stack, Typography, Card } from '@mui/material';
+import { Box } from '@mui/material';
 import { ThemeProvider, createTheme } from '@mui/system';
-// project import
-// import MainCard from 'components/MainCard';
-
-// assets
-import { RiseOutlined, FallOutlined } from '@ant-design/icons';
-
-// ==============================|| STATISTICS - ECOMMERCE CARD  ||============================== //
 
 const theme = createTheme({
     palette: {
