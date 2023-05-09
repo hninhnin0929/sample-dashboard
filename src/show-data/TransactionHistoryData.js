@@ -1,4 +1,4 @@
-import { GiftOutlined, MessageOutlined, SettingOutlined } from '@ant-design/icons';
+import {  MessageOutlined } from '@ant-design/icons';
 import { Typography,
         Stack,
         List, 
@@ -26,6 +26,11 @@ const actionSX = {
   transform: 'none'
 };
 
+let items = [
+    { orderCode: "002434", orderTime: "Today, 2:00 AM", price: 1430, percent: 78 },
+    { orderCode: "984947", orderTime: "5 August, 1:45 PM", price: 302, percent: 78 },
+    { orderCode: "988784", orderTime: "7 hours ago", price: 682, percent: 78 }];
+
 function TransactionHistoryData(){
     return(
         <>
@@ -41,81 +46,68 @@ function TransactionHistoryData(){
                     }
                 }}
             >
-                <ListItemButton divider>
-                    <ListItemAvatar>
-                        <Avatar
-                            sx={{
-                                color: 'success.main',
-                                bgcolor: 'success.lighter'
-                            }}
-                        >
-                            <GiftOutlined />
-                        </Avatar>
-                    </ListItemAvatar>
-                    <ListItemText primary={<Typography variant="subtitle1">Order #002434</Typography>} secondary="Today, 2:00 AM" />
-                    <ListItemSecondaryAction>
-                        <Stack alignItems="flex-end">
-                            <Typography variant="subtitle1" noWrap>
-                                + $1,430
-                            </Typography>
-                            <Typography variant="h6" color="secondary" noWrap>
-                                78%
-                            </Typography>
-                        </Stack>
-                    </ListItemSecondaryAction>
+                {/* <ListItemButton divider>
+                    <ListItem color='primary.main' bgcolor='primary.lighter' orderCode="002434" orderTime="Today, 2:00 AM" price={1430} percent={78}/>
                 </ListItemButton>
                 <ListItemButton divider>
-                    <ListItemAvatar>
-                        <Avatar
-                            sx={{
-                                color: 'primary.main',
-                                bgcolor: 'primary.lighter'
-                            }}
-                        >
-                            <MessageOutlined />
-                        </Avatar>
-                    </ListItemAvatar>
-                    <ListItemText
-                        primary={<Typography variant="subtitle1">Order #984947</Typography>}
-                        secondary="5 August, 1:45 PM"
-                    />
-                    <ListItemSecondaryAction>
-                        <Stack alignItems="flex-end">
-                            <Typography variant="subtitle1" noWrap>
-                                + $302
-                            </Typography>
-                            <Typography variant="h6" color="secondary" noWrap>
-                                8%
-                            </Typography>
-                        </Stack>
-                    </ListItemSecondaryAction>
+                    <ListItem color='primary.main' bgcolor='primary.lighter' orderCode="984947" orderTime="5 August, 1:45 PM" price={302} percent={8}/>                    
                 </ListItemButton>
                 <ListItemButton>
-                    <ListItemAvatar>
-                        <Avatar
-                            sx={{
-                                color: 'error.main',
-                                bgcolor: 'error.lighter'
-                            }}
-                        >
-                            <SettingOutlined />
-                        </Avatar>
-                    </ListItemAvatar>
-                    <ListItemText primary={<Typography variant="subtitle1">Order #988784</Typography>} secondary="7 hours ago" />
-                    <ListItemSecondaryAction>
-                        <Stack alignItems="flex-end">
-                            <Typography variant="subtitle1" noWrap>
-                                + $682
-                            </Typography>
-                            <Typography variant="h6" color="secondary" noWrap>
-                                16%
-                            </Typography>
-                        </Stack>
-                    </ListItemSecondaryAction>
-                </ListItemButton>
+                    <ListItem color='error.main' bgcolor='error.lighter' orderCode="988784" orderTime="7 hours ago" price={682} percent={16}/>                    
+                </ListItemButton> */}
+
+                {
+
+                  items.map((item,index)=>
+                    index === (items.length-1) ?   // this is not real condition, just testing
+                    <ListItemButton>
+                        <ListItem 
+                        color='error.main' bgcolor='error.lighter' orderCode={item.orderCode} orderTime={item.orderTime} price={item.price} percent={item.percent}>        
+                        </ListItem>
+                    </ListItemButton>
+                    :
+                    <ListItemButton>
+                        <ListItem 
+                            color='primary.main' bgcolor='primary.lighter' orderCode={item.orderCode} orderTime={item.orderTime} price={item.price} percent={item.percent}>        
+                        </ListItem>
+                    </ListItemButton>
+
+                    )
+                }
             </List>
         </>
     );
+
+    function ListItem(props){
+        return(
+            <>
+                <ListItemAvatar>
+                    <Avatar
+                        sx={{
+                            color: props.color,
+                            bgcolor: props.bgcolor
+                        }}
+                    >
+                        <MessageOutlined />
+                    </Avatar>
+                </ListItemAvatar>
+                <ListItemText
+                    primary={<Typography variant="subtitle1">Order #{props.orderCode}</Typography>}
+                    secondary={props.orderTime}
+                />
+                <ListItemSecondaryAction>
+                    <Stack alignItems="flex-end">
+                        <Typography variant="subtitle1" noWrap>
+                            + ${props.price}
+                        </Typography>
+                        <Typography variant="h6" color="secondary" noWrap>
+                            {props.percent}%
+                        </Typography>
+                    </Stack>
+                </ListItemSecondaryAction>
+            </>
+        );
+    }
 }
 
 export default TransactionHistoryData;
