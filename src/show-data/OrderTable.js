@@ -1,17 +1,12 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
-import { Link as RouterLink } from 'react-router-dom';
-import Dot from '../cards/Dot';
+import Dot from '../components/cards/Dot';
 
 // material-ui
 import { Box, Link, Stack, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
 
 // third-party
 import { NumericFormat } from 'react-number-format';
-
-// project import
-// import Dot from 'components/@extended/Dot';
-
 
 function createData(trackingNo, name, fat, carbs, protein) {
     return { trackingNo, name, fat, carbs, protein };
@@ -89,6 +84,7 @@ OrderTableHead.propTypes = {
     order: PropTypes.string,
     orderBy: PropTypes.string
 };
+
 const OrderStatus = ({ status }) => {
     let color;
     let title;
@@ -122,6 +118,7 @@ const OrderStatus = ({ status }) => {
 OrderStatus.propTypes = {
     status: PropTypes.number
 };
+
 function descendingComparator(a, b, orderBy) {
     if (b[orderBy] < a[orderBy]) {
         return -1;
